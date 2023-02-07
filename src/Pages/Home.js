@@ -21,7 +21,6 @@ const Home = () => {
                         <Link to="/fitness" > <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/fitness-quotes-1526505836.jpg?crop=0.671xw:0.998xh;0.187xw,0.00244xh&resize=1200:*" alt="not found" /></Link>
                     </div>
                     <div className="home__thir">
-                        <h4></h4>
                         <Link to='/technology'><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfYbMiKvaUQMbrZyg1Y_P9TGeXhYsChatlN478dhcbR6gCblzEJyHXOay0tVbudMo02PI&usqp=CAU" alt="not found" /></Link>
                     </div>
                 </div>
