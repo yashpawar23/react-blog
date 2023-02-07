@@ -5,7 +5,7 @@ import Card from '../Component/Card'
 import SmallCard from '../Component/SmallCard';
 
 const Bollywood = () => {
-    const [detail, setDetail] = useContext(store);
+    const [detail] = useContext(store);
     console.log(detail);
     return (
         <div>
