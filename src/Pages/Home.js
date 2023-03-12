@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom'
 import Card from '../Component/Card'
 import CardHome from '../Component/CardHome'
 import SmallCard from '../Component/SmallCard'
-import { store } from './Details'
 
 const Home = () => {
 
-    const [detail] = useContext(store);
+    const [data,setdata]= useState();
+    useEffect(()=>{
+       fetch("https://node-back-end-czgr.onrender.com")
+       .then((res)=>(res.json()))
+       .then((res)=>(setdata(res)))
+         
+    },[])
+    console.log(data);
     return (
 
         <div>
@@ -29,8 +35,8 @@ const Home = () => {
                 <h1 style={{ marginTop: "40px" }}>The Latest</h1>
                 <hr style={{ width: "200px", thickness: "20px" }} />
                 <div className='home__left left1'>
-                    {
-                        detail.filter((article) => { return article.category === "bollywood" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "bollywood" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -42,8 +48,8 @@ const Home = () => {
                     }
                 </div>
                 <div className='home__left left1'>
-                    {
-                        detail.filter((article) => { return article.category === "technology" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "technology" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -55,8 +61,8 @@ const Home = () => {
                     }
                 </div>
                 <div className='home__left left1'>
-                    {
-                        detail.filter((article) => { return article.category === "food" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "food" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -74,8 +80,8 @@ const Home = () => {
 
 
                 <div className='rightbar2'>
-                    {
-                        detail.filter((article) => { return article.category === "mix" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "mix" }).map((n) => (
                             <Card
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -87,8 +93,8 @@ const Home = () => {
                     }
                 </div>
                 <div className="sidebar2">
-                    {
-                        detail.filter((article) => { return article.category === "mix" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "mix" }).map((n) => (
                             <SmallCard
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -107,8 +113,8 @@ const Home = () => {
                 <hr />
 
                 <div className='home__left'>
-                    {
-                        detail.filter((article) => { return article.category === "footer1" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "footer1" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -121,8 +127,8 @@ const Home = () => {
                 </div>
 
                 <div className='home__left'>
-                    {
-                        detail.filter((article) => { return article.category === "footer2" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "footer2" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -135,8 +141,8 @@ const Home = () => {
                 </div>
 
                 <div className='home__left'>
-                    {
-                        detail.filter((article) => { return article.category === "footer3" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "footer3" }).map((n) => (
                             <CardHome
                                 articleid={n.id}
                                 imgUrl={n.Image}

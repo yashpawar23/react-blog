@@ -1,10 +1,18 @@
 import React, {useContext} from 'react'
-import { store } from './Details'
 import Card from '../Component/Card'
 import SmallCard from '../Component/SmallCard';
 
 export const Technology = () => {
-  const [detail, ] = useContext(store);
+
+  const [data,setdata]= useState();
+  useEffect(()=>{
+     fetch("https://node-back-end-czgr.onrender.com")
+     .then((res)=>(res.json()))
+     .then((res)=>(setdata(res)))
+       
+  },[])
+  console.log(data);
+
   return (
     <div>
             <h1 style={{ margin: "20px 10%", display: "inline-block" }}>Technology</h1>
@@ -12,8 +20,8 @@ export const Technology = () => {
 
             <div className="main__container">
             <div className='rightbar'>
-                  {
-                    detail.filter((article) =>{return article.category === "Technology"}).map((n)=>( <Card 
+                  { data&&
+                    data.filter((article) =>{return article.category === "Technology"}).map((n)=>( <Card 
 
                       articleid={n.id}
                       imgUrl = {n.Image}
@@ -24,8 +32,8 @@ export const Technology = () => {
                   }
             </div>
             <div className="sidebar">
-                    {
-                        detail.filter((article) => { return article.category === "Technology" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "Technology" }).map((n) => (
                             <SmallCard
                                 articleid={n.id}
                                 imgUrl={n.Image}

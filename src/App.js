@@ -10,6 +10,7 @@ import Food from "./Pages/Food"
 import SingleBlogPage from "./Pages/SingleBlogPage";
 import './Style.css'
 import Details from "./Pages/Details";
+import SomeData from "./Pages/SomeData";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/fitness" element = {<Fitness />} />
         <Route path="/food" element = {<Food />} />
         <Route path=":category/:articleid" element = {<SingleBlogPage/>}/>
+        <Route path="/data" element={<SomeData/>}/>
       </Routes>
       </BrowserRouter>
       </Details>

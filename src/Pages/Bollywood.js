@@ -1,20 +1,29 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { store } from './Details'
 import Card from '../Component/Card'
 import SmallCard from '../Component/SmallCard';
 
 const Bollywood = () => {
-    const [detail] = useContext(store);
-    console.log(detail);
+    const [data,setdata]= useState();
+    useEffect(()=>{
+       fetch("https://node-back-end-czgr.onrender.com")
+       .then((res)=>(res.json()))
+       .then((res)=>(setdata(res)))
+         
+    },[])
+    console.log(data);
+
+
     return (
+        
         <div>
             <h1 style={{ margin: "20px 10%", display: "inline-block" }}>BOLLYWOOD</h1>
             <h1 style={{ margin: "20px 0px 20px 34.15%", display: "inline-block" }}>Top Posts</h1>
             <div className="main__container">
                 <div className='rightbar'>
-                    {
-                        detail.filter((article) => { return article.category === "Bollywood" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "Bollywood" }).map((n) => (
+
                             <Card
                                 articleid={n.id}
                                 imgUrl={n.Image}
@@ -24,11 +33,12 @@ const Bollywood = () => {
                             />
                         ))
                     }
+                    
                 </div>
 
                 <div className="sidebar">
-                    {
-                        detail.filter((article) => { return article.category === "Bollywood" }).map((n) => (
+                    { data &&
+                        data.filter((article) => { return article.category === "Bollywood" }).map((n) => (
                             <SmallCard
                                 articleid={n.id}
                                 imgUrl={n.Image}
